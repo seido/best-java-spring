@@ -1,0 +1,21 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js -p default"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "chai": "^4.5.0",
+    "jsonpath-plus": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

@@ -12,6 +12,13 @@
 			"installGradle": "true"
 		},
 		"ghcr.io/devcontainers-contrib/features/node-asdf:0": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"stevejpurves.cucumber"
+			]
+		}
 	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

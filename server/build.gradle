@@ -1,0 +1,26 @@
+plugins {
+	id 'java'
+	id 'war'
+}
+
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation project(':lib')
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+bootRun {
+    systemProperty "spring.profiles.active", "memory-db"
+}

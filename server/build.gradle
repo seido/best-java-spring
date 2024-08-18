@@ -22,5 +22,5 @@ tasks.named('test') {
 }
 
 bootRun {
-    systemProperty "spring.profiles.active", "memory-db"
+    //systemProperty "spring.profiles.active", "memory-db"
 }

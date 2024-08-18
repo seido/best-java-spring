@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jp.seido.naoyuki.lib.entity.User;
 import jp.seido.naoyuki.lib.service.UserStore;
 import lombok.AllArgsConstructor;
@@ -41,14 +44,18 @@ public class TestController {
 
     @Data
     private static class PutRequest {
+        @NotBlank
         private String username;
+        @NotBlank
+        @Pattern(regexp = "^[\\p{Print}&&[^\\p{Cntrl}]]+$")
         private String password;
     }
 
     @PutMapping()
-    public Respoonse putUser(@RequestBody PutRequest request) {
+    public Respoonse putUser(@RequestBody @Valid PutRequest request) {
         User user = this.userStore.register(request.getUsername(), request.getPassword());
 
+        logger.info("user: {}", user);
         return Respoonse.builder().user(user).build();
     }
 }

@@ -1,0 +1,7 @@
+lib/bin
+lib/build
+server/bin
+server/build
+
+node_modules/
+cucumber-reports.html

@@ -1,0 +1,29 @@
+services:
+    server:
+        build:
+            context: ../
+            dockerfile: build/java/Dockerfile
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8080/test?id=healthcheck"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+            start_period: 10s
+        ports:
+            - "8080"
+        networks:
+            - internal
+    e2e:
+        build:
+            context: ../
+            dockerfile: build/e2e/Dockerfile
+        environment:
+            BASE_URL: http://server:8080
+        depends_on:
+            server:
+                condition: service_healthy
+        networks:
+            - internal
+networks:
+    internal:
+        driver: bridge

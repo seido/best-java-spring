@@ -1,3 +1,5 @@
 #!/bin/bash -eu
 
-docker run -it -p 8080:8080 -t server
+MY_DIR=$(cd $(dirname $0) && pwd)
+
+cd $MY_DIR && docker compose run --rm -p 8080:8080 server
